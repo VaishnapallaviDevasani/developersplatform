@@ -30,8 +30,10 @@ const PostItem = ({
       <p className='my-1'>{text}</p>
       {githubLink && (
         <p className='my-1'>
-    🔗 <a href={githubLink} target='_blank' rel='noopener noreferrer'>{githubLink}</a>
-          </p>
+  🔗 <a href={githubLink} target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'underline' }}>
+    {githubLink}
+  </a>
+</p>
         )}
 
       <p className='post-date'>Posted on {formatDate(date)}</p>
