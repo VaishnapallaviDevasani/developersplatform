@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { addLike, removeLike, deletePost } from '../../actions/post';
+import { addLike, deletePost, removeLike } from '../../actions/post';
 import formatDate from '../../utils/formatDate';
 
 const PostItem = ({
@@ -10,7 +10,7 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  post: { _id, text, githubLink, name, avatar, user, likes, comments, date },
   showActions,
 }) => (
   <div className='post bg-white my-1 p-1'>
@@ -28,6 +28,11 @@ const PostItem = ({
 
     <div>
       <p className='my-1'>{text}</p>
+      {githubLink && (
+        <p className='my-1'>
+    🔗 <a href={githubLink} target='_blank' rel='noopener noreferrer'>{githubLink}</a>
+          </p>
+        )}
 
       <p className='post-date'>Posted on {formatDate(date)}</p>
 

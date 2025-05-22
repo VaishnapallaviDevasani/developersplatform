@@ -1,16 +1,21 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost }) => {
-  const [text, setText] = useState('');
+  const [formData, setFormData] = useState({
+    text: '',
+    githubLink: ''
+  });
+
+  const { text, githubLink } = formData;
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    addPost({ text });
-    setText('');
+    addPost({ text, githubLink });
+    setFormData({ text: '', githubLink: '' });
   };
 
   return (
@@ -26,10 +31,20 @@ const PostForm = ({ addPost }) => {
           rows='5'
           placeholder='Create a Post'
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) =>
+            setFormData({ ...formData, [e.target.name]: e.target.value })
+          }
           required
         />
-
+        <input
+          type='url'
+          name='githubLink'
+          placeholder='GitHub project link (optional)'
+          value={githubLink}
+          onChange={(e) =>
+            setFormData({ ...formData, [e.target.name]: e.target.value })
+          }
+        />
         <input type='submit' value='Submit' className='btn btn-dark my-1' />
       </form>
     </div>
