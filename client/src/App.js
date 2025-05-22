@@ -1,27 +1,29 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Navbar from './components/layout/Navbar';
-import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Alert from './components/layout/Alert';
+import Chat from './components/chat/Chat';
 import Dashboard from './components/dashboard/Dashboard';
-import ProfileForm from './components/profile-form/ProfileForm';
-import AddExperience from './components/profile-form/AddExperience';
-import AddEducation from './components/profile-form/AddEducation';
-import Profiles from './components/profiles/Profiles';
-import Profile from './components/profile/Profile';
-import Posts from './components/posts/Posts';
-import Post from './components/post/Post';
+import Alert from './components/layout/Alert';
+import Landing from './components/layout/Landing';
+import Navbar from './components/layout/Navbar';
 import NotFound from './components/layout/NotFound';
+import Post from './components/post/Post';
+import Posts from './components/posts/Posts';
+import AddEducation from './components/profile-form/AddEducation';
+import AddExperience from './components/profile-form/AddExperience';
+import ProfileForm from './components/profile-form/ProfileForm';
+import Profile from './components/profile/Profile';
+import Profiles from './components/profiles/Profiles';
 import PrivateRoute from './components/routing/PrivateRoute';
+
 
 // Redux
 import { Provider } from 'react-redux';
-import { store } from './store';
 import { loadUser } from './actions/auth';
 import { LOGOUT } from './actions/types';
+import { store } from './store';
 import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
@@ -79,6 +81,8 @@ const App = () => {
           <Route path='posts' element={<PrivateRoute component={Posts} />} />
           <Route path='posts/:id' element={<PrivateRoute component={Post} />} />
           <Route path='/*' element={<NotFound />} />
+          <Route path='chat/:userId' element={<PrivateRoute component={Chat} />}/>
+
         </Routes>
       </BrowserRouter>
     </Provider>

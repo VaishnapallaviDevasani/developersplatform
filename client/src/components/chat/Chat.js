@@ -1,19 +1,18 @@
-// client/src/components/chat/Chat.js
-
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-const Chat = ({ userId }) => {
+const Chat = () => {
+  const { userId } = useParams();  // get userId from URL
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState('');
 
-  // Fetch messages with selected user
   useEffect(() => {
     const fetchMessages = async () => {
       const res = await axios.get(`/api/messages/${userId}`);
       setMessages(res.data);
     };
-    fetchMessages();
+    if (userId) fetchMessages();
   }, [userId]);
 
   const sendMessage = async () => {
