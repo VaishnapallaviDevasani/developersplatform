@@ -15,7 +15,3 @@
 - [ExpressJS](https://expressjs.com/)
 - [ReactJS](https://reactjs.org/)
 - [NodeJS](https://nodejs.org/en/)
-
-### Created By
-
-    Mugilan E.S.
