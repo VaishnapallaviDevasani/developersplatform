@@ -1,7 +1,4 @@
 # DevBook
-
-[![time tracker](https://wakatime.com/badge/github/Mugilan-Codes/dev-book.svg)](https://wakatime.com/badge/github/Mugilan-Codes/dev-book)
-
 ## Web Programming Project
 
 ### TODO
